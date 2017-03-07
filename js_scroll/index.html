@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>Javascript Demo</title>
+	<style>
+		body {
+			background-color:black;
+			font-family: monospace;
+			color:white;
+			font-size:50px;
+			text-align: center;
+			margin-top:20%;
+		}
+
+		#magic{
+			color: #777;
+			border-right: 1px solid #777;
+			padding-right: 7px;
+			display: inline;
+		}
+	</style>
+</head>
+<body>
+
+	Coding is <div id="magic"></div>
+
+	<script>
+    var words = ["fun", "about not giving up", "being helpful", "being open", "what I learned at CodingDojo!"], //array of keywords
+			el = document.getElementById('magic'), // method to access a page element by param
+			word_counter = 0, // should increment after the appropriate if loop runs
+			character_counter = 0; //
+
+		function updateText() // declares a new function that contains code that is run by the setInterval method on line 50
+		{
+      debugger
+      console.log(`This is output of: ${words[word_counter][character_counter]}`);
+      console.log('This is value of long string var: ',words[word_counter][character_counter]);
+      // if(words[word_counter][character_counter++] === ' '){
+      //   words[word_counter][character_counter++] = "&nbsp;" // if the next char is space then insert non breaking char and move on.
+      // }
+
+      //set this var to move thru the words in the Arr words.  Also ????
+      console.log("this is current before value of el.innerHTML: ", el.innerHTML);
+      el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+      console.log("this is current after value of el.innerHTML: ", el.innerHTML);
+
+      if(character_counter == words[word_counter].length+1)// CORRECTION HERE: word length is index position short by 1.
+      // if variable char counter is equal to the word in words array at position "word_counter"'s lenth then run this code:
+			{
+				word_counter++; 	//choose a different word
+				character_counter = 0;	//start over with the first character of the word
+				el.innerHTML = '';  //set the html to be blank
+
+				//if we're displaying the last word, go back to the first word
+				if(word_counter == words.length)
+					word_counter = 0;
+			}
+		}
+
+		setInterval(updateText,1000);
+
+	</script>
+
+</body>
+
+</html>
