@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Controller and Directives</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script type="text/javascript">
+
+      var myAppModule = angular.module('myApp', []);
+      myAppModule.controller('foodController', function ($scope) {
+        $scope.food_array = [];
+        $scope.addFood = function () {
+          $scope.food_array.push($scope.food);
+          $scope.food = '';
+        }
+      });
+    </script>
+  </head>
+
+  <body ng-app='myApp'>
+    <h3>Add a Favorite Food</h3>
+
+    <div ng-controller='foodController'>
+
+      <form ng-submit='addFood()'>
+        Favorite Food:
+        <input type="text" ng-model='food'>
+        <input type="submit" value="add">
+      </form>
+
+      <p ng-if = 'food'>Live type updating: {{food}}</p>
+      <ul>
+        <li ng-repeat ="eachfood in food_array">{{eachfood}}</li>
+      </ul>
+    </div>
+
+
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  -->
